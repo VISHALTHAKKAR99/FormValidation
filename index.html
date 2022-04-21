@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		//$("#btn").hide();
+		$("#email").keyup(function(){
+			if(validateEmail()){
+				$("#email").css("border","2px solid green");
+				$("#emailMsg").html("<p class='text-success'>Validated</p>");
+				
+			}else{
+				$("#email").css("border","2px solid red");
+				$("#emailMsg").html("<p class='text-danger'>Invalidated</p>");
+			}
+			//buttonState();
+		});
+		$("#pass").keyup(function(){
+			if(validatePassword()){
+				$("#pass").css("border","2px solid green");
+				$("#passMsg").html("<p class='text-success'>Password validated</p>");
+			}else{
+				$("#pass").css("border","2px solid red");
+				$("#passMsg").html("<p class='text-danger'>Password must be 8-10 digits</p>");
+			}
+			//buttonState();
+		});
+
+	
+		 $('#btn').click(function()
+		 {
+		 	var email=$("#email").val();
+		 	var pass=$("#pass").val();
+	
+		 	if(email == ''|| pass == '')
+		 	{
+				alert("Enter All Detail");
+			}
+			else
+			{	
+			if(validateEmail() && validatePassword())
+			{
+				alert("Added");	
+			}	
+				
+			}
+			
+			
+		 });
+    });
+
+	function validateEmail(){
+		var email=$("#email").val();
+		 var reg = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
+		 if(reg.test(email)){
+		 	return true;
+		 }else{
+		 	return false;
+		 }
+
+	}
+	function validatePassword(){
+		var pass=$("#pass").val();
+		if(pass.length > 7 && pass.length<11){
+			return true;
+		}else{
+			return false;
+		}
+
+	}
+
+	//  function fun(){
+		
+    //    $('#email').text(function(){
+    //         document.forms["myForm"].reset();
+    //     })
+    // }
+</script>
+<body class="bg-primary">
+    <div class="text-center">
+    <h1 class="text-danger">Form Validation<span  class="badge bg-secondary"></h1>
+    </div>
+<div class="container">
+    <form name="myForm">
+	<div class="row">
+		<div class="col-md-4">
+		</div>
+		<div class="col-md-4 border shadow-sm bg-light" style="margin-top:8%;padding:10px;">
+			<div class="form-group">
+				<label>Enter email:</label>
+				<input type="email" class="form-control" id="email" placeholder="Enter email" autocomplete="off" name="" >
+				<span id="emailMsg"></span>
+			</div>
+
+			<div class="form-group">
+				<label>Enter password:</label>
+				<input type="password" class="form-control" id="pass" placeholder="Enter password" autocomplete="off" name="" >
+				<span id="passMsg"></span>
+			</div>
+
+			<div class="form-group">
+				<button class="btn btn-primary btn-block" onclick="fun();" id="btn">Submit</button>
+			</div>
+
+
+			
+		</div>
+		<div class="col-md-4">
+		</div>
+	</div>
+    </form>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
